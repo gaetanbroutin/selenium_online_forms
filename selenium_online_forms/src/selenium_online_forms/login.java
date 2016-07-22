@@ -1,8 +1,14 @@
 package selenium_online_forms;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class login {
 
@@ -10,7 +16,9 @@ public class login {
         // declaration and instantiation of objects/variables
     	System.setProperty("webdriver.chrome.driver", "/Program Files (x86)/Google/Chrome/Application/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        String baseUrl = "https://1602.moveon4.com/locallogin/54086fd30f9d30ba7b000000/eng";
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        
+        String baseUrl = "https://1602-bo.moveon4.com/";
 
         
         //String actualTitle = "";
@@ -19,10 +27,25 @@ public class login {
         driver.get(baseUrl);
         
         // Enter login
-        driver.findElement(By.name("label_email")).sendKeys("gaetan.broutin1@yopmail.com");
-        driver.findElement(By.name("label_password")).sendKeys("gaetan.broutin1@yopmail.com");
-        driver.findElement(By.name("label_password")).submit();
-
+        driver.findElement(By.name("username")).sendKeys("training@test.com");
+        driver.findElement(By.name("password")).sendKeys("training123");
+        driver.findElement(By.name("password")).submit();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sideBarFunding_wrapper")));
+        driver.findElement(By.id("sideBarFunding_wrapper")).click();
+        driver.findElement(By.id("sideBarOption-fundings")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='actionsToolbar']/li[1]/a")));
+        driver.findElement(By.xpath("//*[@id='actionsToolbar']/li[1]/a")).click();
+        
+        
+        //instanciate and click on dropdown
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
+        List<WebElement> allDropDowns = driver.findElements(By.xpath("//*[@id='info_Funding_']//select[not(@disable_validation='true')]"));
+        for (WebElement element: allDropDowns){
+            element.click();
+        }
+        //Select countries = new Select(driver.findElement(By.name("countryId")));
+        //countries.selectByIndex(0);
         // get the actual value of the title
       //  actualTitle = driver.getTitle();
 
