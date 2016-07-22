@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class login {
-
     public static void main(String[] args) {
         // declaration and instantiation of objects/variables
     	System.setProperty("webdriver.chrome.driver", "/Program Files (x86)/Google/Chrome/Application/chromedriver.exe");
@@ -19,7 +18,6 @@ public class login {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         
         String baseUrl = "https://1602-bo.moveon4.com/";
-
         
         //String actualTitle = "";
 
@@ -36,14 +34,29 @@ public class login {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='actionsToolbar']/li[1]/a")));
         driver.findElement(By.xpath("//*[@id='actionsToolbar']/li[1]/a")).click();
         
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
+
+
         
-        //instanciate and click on dropdown
+        SelectOption dropdownCountry = new SelectOption();
+        
+        dropdownCountry.SelectOption(driver, wait, "countryId","73");
+        dropdownCountry.SelectOption(driver, wait, "countryId","33");
+        
+        // Select 
+        
+        /*instanciate and click on all dropdown
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
         List<WebElement> allDropDowns = driver.findElements(By.xpath("//*[@id='info_Funding_']//select[not(@disable_validation='true')]"));
         for (WebElement element: allDropDowns){
             element.click();
         }
+        
+        */
+        
         //Select countries = new Select(driver.findElement(By.name("countryId")));
         //countries.selectByIndex(0);
         // get the actual value of the title
