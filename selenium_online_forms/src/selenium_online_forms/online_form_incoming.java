@@ -16,7 +16,8 @@ public class online_form_incoming {
         // declaration and instantiation of objects/variables
     	System.setProperty("webdriver.chrome.driver", "/Program Files (x86)/Google/Chrome/Application/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        FormNavigation formNavigation = new FormNavigation();
         
         String baseUrl = "https://1602.moveon4.com/form/542405a10f9d30f402000000/eng";
         
@@ -27,10 +28,21 @@ public class online_form_incoming {
         
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='fadeLayer']")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='fadeLayer']")));
-        driver.findElement(By.xpath("//*[@kind='next_button']")).click();
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@kind='next_button']")).click();
-        driver.findElement(By.id("ᐅPersonᐅfieldset-identity_labelᐅsurname")).sendKeys("training123");
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.save(driver);
+        formNavigation.back(driver);
+        formNavigation.back(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.next(driver);
+        formNavigation.submit(driver);
+        //driver.findElement(By.id("ᐅPersonᐅfieldset-identity_labelᐅsurname")).sendKeys("training123");
         
         // Enter login
       
