@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class login {
     public static void main(String[] args) {
         // declaration and instantiation of objects/variables
@@ -31,13 +32,15 @@ public class login {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sideBarFunding_wrapper")));
         driver.findElement(By.id("sideBarFunding_wrapper")).click();
         driver.findElement(By.id("sideBarOption-fundings")).click();
+        
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='actionsToolbar']/li[1]/a")));
         driver.findElement(By.xpath("//*[@id='actionsToolbar']/li[1]/a")).click();
+        driver.findElement(By.id("sideBarFunding_button_title")).click();
         
-
+        
+        
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='customFormLoading']")));
-
 
         
         SelectOption dropdownCountry = new SelectOption();

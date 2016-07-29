@@ -9,13 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class FormNavigation {
 	
 	
-	public void next(WebDriver driver) {
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	public void next(WebDriver driver, int actionOccurences) {
+		for (int i=1; i<=actionOccurences; i++){
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		    driver.findElement(By.xpath("//*[@kind='next_button']")).click();
 		}
-	    driver.findElement(By.xpath("//*[@kind='next_button']")).click();
 	}
 
 	public void back(WebDriver driver) {

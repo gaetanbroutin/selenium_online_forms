@@ -28,25 +28,11 @@ public class online_form_incoming {
         
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='fadeLayer']")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='fadeLayer']")));
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.save(driver);
-        formNavigation.back(driver);
-        formNavigation.back(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.next(driver);
-        formNavigation.submit(driver);
+        formNavigation.next(driver,2);
         //driver.findElement(By.id("ᐅPersonᐅfieldset-identity_labelᐅsurname")).sendKeys("training123");
         
         // Enter login
-      
-        
+        FileInput.upload(driver,"ᐅPersonᐅfieldset-identity_document_labelᐅupload1","C:\\Users\\gaetan.broutin\\Pictures\\medavis_Bildschirmhintergrund_2015.jpg");
 
         //close Broswer
         //driver.close();
